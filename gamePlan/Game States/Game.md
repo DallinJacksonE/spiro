@@ -1,0 +1,1 @@
+The game state tracks the progress of the player through the story and the map. They are separate so returning players can choose to turn off the guided story and make their way through the map on their own. This independence means that the story will point players to do things on the map, but the map is the real tracker of game progression if the player turns off the story.

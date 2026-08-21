@@ -1,0 +1,3 @@
+Player rummaging through the woods finds a small drone and map with a note. The note tells them that they might be able to build a safe place for themselves if they can master the swarm. The note is signed Spiro. The player follows the map to a workshop and gets a tutorial for building a drone. Context of the game reveals player is in a state of nature society where those who have scraps of civilization rule and take what they want. This starts the series of chapters.
+
+[[Chapter One - Lessons in Circuits]]

@@ -1,0 +1,32 @@
+### Knowledge
+- Circuits
+	- Power
+	- Resistance
+	- Chips/controllers
+- Aircraft
+	- Motors
+	- Propellers
+	- Quad-rotor drones
+	- Multi-rotor drones
+	- Fixed wing drones
+	- Hybrid wing
+- Radios
+	- Radio types
+	- Aircraft communication
+- Computers
+	- UAVs
+	- Cameras
+	- Thermals
+	- Image processing
+	- Flight Planning
+- Weapons
+	- Package delivery
+	- EMPs
+	- Rams
+	- Rifles
+- Defenses
+	- Underground
+	- Sensors for drone detection
+	- Umbrellas
+	- Thermal suits
+	- 
