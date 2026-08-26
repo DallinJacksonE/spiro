@@ -663,10 +663,10 @@ update_field_player :: proc(scene: ^Field_Scene) {
 		moved = try_move_field_player_steps(scene, 0, 1, step_count) || moved
 	}
 	if rl.IsKeyPressed(.A) || rl.IsKeyPressed(.LEFT) {
-		moved = try_move_field_player_steps(scene, 1, 0, step_count) || moved
+		moved = try_move_field_player_steps(scene, -1, 0, step_count) || moved
 	}
 	if rl.IsKeyPressed(.D) || rl.IsKeyPressed(.RIGHT) {
-		moved = try_move_field_player_steps(scene, -1, 0, step_count) || moved
+		moved = try_move_field_player_steps(scene, 1, 0, step_count) || moved
 	}
 
 	states.set_player_move_animation(&scene.player, moved, running && moved)
