@@ -33,7 +33,12 @@ hovered_tile_from_cursor :: proc(field: ^Field_Map, camera: rl.Camera3D) -> Hove
 		return Hovered_Tile{position = world, inside = false}
 	}
 
-	return Hovered_Tile{point = point, tile = map_tile_at(field, point.x, point.z), position = tile_world_position(field, point.x, point.z), inside = true}
+	return Hovered_Tile {
+		point = point,
+		tile = map_tile_at(field, point.x, point.z),
+		position = tile_world_position(field, point.x, point.z),
+		inside = true,
+	}
 }
 
 world_to_tile :: proc(field: ^Field_Map, world: rl.Vector3) -> (Map_Point, bool) {
@@ -54,7 +59,11 @@ draw_hovered_tile_marker :: proc(field: ^Field_Map, hovered: Hovered_Tile) {
 		return
 	}
 
-	rl.DrawCubeWiresV(rl.Vector3{hovered.position.x, 0.08, hovered.position.z}, rl.Vector3{field.tile_size, 0.16, field.tile_size}, rl.YELLOW)
+	rl.DrawCubeWiresV(
+		rl.Vector3{hovered.position.x, 0.08, hovered.position.z},
+		rl.Vector3{field.tile_size, 0.16, field.tile_size},
+		rl.YELLOW,
+	)
 }
 
 draw_hovered_tile_panel :: proc(hovered: Hovered_Tile) {
@@ -66,13 +75,15 @@ draw_hovered_tile_panel :: proc(hovered: Hovered_Tile) {
 	x := i32(mouse.x) + 18
 	y := i32(mouse.y) + 18
 	panel_width := i32(190)
-	panel_height := i32(82)
+	panel_height := i32(128)
 
 	rl.DrawRectangle(x, y, panel_width, panel_height, rl.ColorAlpha(rl.BLACK, 0.72))
 	rl.DrawRectangleLines(x, y, panel_width, panel_height, rl.YELLOW)
 	rl.DrawText("Tile", x + 10, y + 8, 18, rl.LIGHTGRAY)
 	rl.DrawText(tile_name(hovered.tile), x + 10, y + 30, 20, rl.RAYWHITE)
 	rl.DrawText(tile_cover_label(hovered.tile), x + 10, y + 56, 16, rl.GREEN)
+	rl.DrawText(tile_block_count_label(hovered.tile), x + 10, y + 78, 16, rl.LIGHTGRAY)
+	rl.DrawText(tile_surface_label(hovered.tile), x + 10, y + 100, 16, rl.LIGHTGRAY)
 }
 
 tile_name :: proc(tile: Map_Tile) -> cstring {
@@ -95,6 +106,12 @@ tile_name :: proc(tile: Map_Tile) -> cstring {
 		return "Sand"
 	case .Dune:
 		return "Dune"
+	case .Shore:
+		return "Shore"
+	case .Shallow_Water:
+		return "Shallow_Water"
+	case .Deep_Water:
+		return "Deep_Water"
 	case .Enemy_Outpost:
 		return "Enemy Outpost"
 	case .Drone_Launch:
@@ -110,4 +127,24 @@ tile_cover_label :: proc(tile: Map_Tile) -> cstring {
 	}
 
 	return "Cover: no"
+}
+
+tile_block_count_label :: proc(tile: Map_Tile) -> cstring {
+	if tile == .Empty {
+		return "Blocks: 0"
+	}
+
+	return "Blocks: 125 (5x5x5)"
+}
+
+tile_surface_label :: proc(tile: Map_Tile) -> cstring {
+	level := tile_block_level(tile, 0)
+	if level.attributes.falls_without_support {
+		return "Top: falls if unsupported"
+	}
+	if level.attributes.tunnelable {
+		return "Top: stable tunnel material"
+	}
+
+	return "Top: solid"
 }

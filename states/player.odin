@@ -25,6 +25,7 @@ Player_Posture :: enum {
 }
 
 Weapon_Type :: enum {
+	Shovel,
 	Sidearm,
 	Rifle,
 	Launcher,
@@ -66,6 +67,7 @@ player_init :: proc() -> Player {
 
 player_inventory_init :: proc() -> Player_Inventory {
 	inventory: Player_Inventory
+	inventory.weapons[.Shovel] = Weapon_State{kind = .Shovel, ammo = 0, capacity = 0}
 	inventory.weapons[.Sidearm] = Weapon_State{kind = .Sidearm, ammo = 36, capacity = 36}
 	inventory.weapons[.Rifle] = Weapon_State{kind = .Rifle, ammo = 90, capacity = 90}
 	inventory.weapons[.Launcher] = Weapon_State{kind = .Launcher, ammo = 3, capacity = 3}
@@ -105,6 +107,10 @@ player_can_jump :: proc(player: ^Player) -> bool {
 
 player_can_shoot :: proc(player: ^Player) -> bool {
 	weapon := player.inventory.weapons[player.inventory.current_weapon]
+	if weapon.kind == .Shovel {
+		return player_is_alive(player) && player.shoot_elapsed <= 0
+	}
+
 	return player_is_alive(player) && player.shoot_elapsed <= 0 && weapon.ammo > 0
 }
 
@@ -171,6 +177,10 @@ deploy_player_shield_cover :: proc(player: ^Player) -> bool {
 	return true
 }
 
+deactivate_player_shield_cover :: proc(player: ^Player) {
+	player.shield_deployed = false
+}
+
 cycle_player_weapon :: proc(player: ^Player, weapon: Weapon_Type) {
 	player.inventory.current_weapon = weapon
 }
@@ -179,7 +189,9 @@ shoot_player_weapon :: proc(player: ^Player) -> bool {
 	if !player_can_shoot(player) {
 		return false
 	}
-	player.inventory.weapons[player.inventory.current_weapon].ammo -= 1
+	if player.inventory.current_weapon != .Shovel {
+		player.inventory.weapons[player.inventory.current_weapon].ammo -= 1
+	}
 	player.shoot_elapsed = PLAYER_SHOOT_FLASH_SECONDS
 	player.animation = .Shooting
 	return true
@@ -198,6 +210,8 @@ player_take_damage :: proc(player: ^Player, amount: i32) {
 
 player_weapon_name :: proc(weapon: Weapon_Type) -> cstring {
 	switch weapon {
+	case .Shovel:
+		return "Shovel"
 	case .Sidearm:
 		return "Sidearm"
 	case .Rifle:
