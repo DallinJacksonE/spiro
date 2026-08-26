@@ -4,6 +4,7 @@ import rl "vendor:raylib"
 import scenes ".."
 
 NO_SUBTITLES := [?]cstring {}
+NIGHT_SKY_COLOR :: rl.Color{4, 6, 18, 255}
 
 SHOT_2_SUBTITLES := [?]cstring {
 	"The Age of Clans came after the Swarm Wars, but in truth, the Wars haven't stopped.",
@@ -22,6 +23,30 @@ SHOT_4_SUBTITLES := [?]cstring {
 
 SHOT_1_DRAWABLES := [?]scenes.Cutscene_Drawable {
 	{
+		asset = .Night_Sky,
+		position_start = rl.Vector3{0, 7, -18},
+		position_end = rl.Vector3{0, 7, -18},
+		size_start = rl.Vector3{34, 16, 1},
+		size_end = rl.Vector3{34, 16, 1},
+		color = NIGHT_SKY_COLOR,
+	},
+	{
+		asset = .Mountain_Range,
+		position_start = rl.Vector3{0, -0.8, -16},
+		position_end = rl.Vector3{0, -0.8, -16},
+		size_start = rl.Vector3{22, 5.2, 2.4},
+		size_end = rl.Vector3{22, 5.2, 2.4},
+		color = rl.DARKGRAY,
+	},
+	{
+		asset = .Ground_Patch,
+		position_start = rl.Vector3{0, 0, -3},
+		position_end = rl.Vector3{0, 0, -3},
+		size_start = rl.Vector3{20, 0.16, 20},
+		size_end = rl.Vector3{20, 0.16, 20},
+		color = rl.DARKGREEN,
+	},
+	{
 		position_start = rl.Vector3{0, 2, -8},
 		position_end = rl.Vector3{0, 2, -8},
 		size_start = rl.Vector3{0.5, 0.5, 0.5},
@@ -39,33 +64,57 @@ SHOT_1_DRAWABLES := [?]scenes.Cutscene_Drawable {
 
 SHOT_2_DRAWABLES := [?]scenes.Cutscene_Drawable {
 	{
+		asset = .Night_Sky,
+		position_start = rl.Vector3{0, 7, -16},
+		position_end = rl.Vector3{0, 7, -40},
+		size_start = rl.Vector3{38, 18, 1},
+		size_end = rl.Vector3{38, 18, 1},
+		color = NIGHT_SKY_COLOR,
+	},
+	{
+		asset = .Mountain_Range,
+		position_start = rl.Vector3{0, -0.7, -14},
+		position_end = rl.Vector3{0, -0.7, -38},
+		size_start = rl.Vector3{28, 6, 2.6},
+		size_end = rl.Vector3{28, 6, 2.6},
+		color = rl.DARKGRAY,
+	},
+	{
+		asset = .Ground_Patch,
+		position_start = rl.Vector3{0, 0, 0},
+		position_end = rl.Vector3{0, 0, -26},
+		size_start = rl.Vector3{24, 0.16, 36},
+		size_end = rl.Vector3{24, 0.16, 36},
+		color = rl.DARKGREEN,
+	},
+	{
 		asset = .Pine_Tree,
-		position_start = rl.Vector3{-4, 2, 8},
-		position_end = rl.Vector3{-4, 2, -18},
+		position_start = rl.Vector3{-4, 0, 8},
+		position_end = rl.Vector3{-4, 0, -18},
 		size_start = rl.Vector3{1.6, 4, 1.6},
 		size_end = rl.Vector3{1.6, 4, 1.6},
 		color = rl.DARKGREEN,
 	},
 	{
 		asset = .Oak_Tree,
-		position_start = rl.Vector3{3, 2, 5},
-		position_end = rl.Vector3{3, 2, -21},
+		position_start = rl.Vector3{3, 0, 5},
+		position_end = rl.Vector3{3, 0, -21},
 		size_start = rl.Vector3{1.8, 3.6, 1.8},
 		size_end = rl.Vector3{1.8, 3.6, 1.8},
 		color = rl.GREEN,
 	},
 	{
 		asset = .Pine_Tree,
-		position_start = rl.Vector3{-2, 2, 0},
-		position_end = rl.Vector3{-2, 2, -26},
+		position_start = rl.Vector3{-2, 0, 0},
+		position_end = rl.Vector3{-2, 0, -26},
 		size_start = rl.Vector3{1.4, 4.2, 1.4},
 		size_end = rl.Vector3{1.4, 4.2, 1.4},
 		color = rl.DARKGREEN,
 	},
 	{
 		asset = .Oak_Tree,
-		position_start = rl.Vector3{5, 2, -3},
-		position_end = rl.Vector3{5, 2, -29},
+		position_start = rl.Vector3{5, 0, -3},
+		position_end = rl.Vector3{5, 0, -29},
 		size_start = rl.Vector3{1.5, 3.8, 1.5},
 		size_end = rl.Vector3{1.5, 3.8, 1.5},
 		color = rl.GREEN,
@@ -73,6 +122,22 @@ SHOT_2_DRAWABLES := [?]scenes.Cutscene_Drawable {
 }
 
 SHOT_3_DRAWABLES := [?]scenes.Cutscene_Drawable {
+	{
+		asset = .Night_Sky,
+		position_start = rl.Vector3{0, 8, -18},
+		position_end = rl.Vector3{0, 8, -18},
+		size_start = rl.Vector3{36, 18, 1},
+		size_end = rl.Vector3{36, 18, 1},
+		color = NIGHT_SKY_COLOR,
+	},
+	{
+		asset = .Mountain_Range,
+		position_start = rl.Vector3{0, -0.7, -15},
+		position_end = rl.Vector3{0, -0.7, -15},
+		size_start = rl.Vector3{26, 5.5, 2.4},
+		size_end = rl.Vector3{26, 5.5, 2.4},
+		color = rl.DARKGRAY,
+	},
 	{
 		asset = .Fixed_Wing_Drone,
 		position_start = rl.Vector3{-3, 5, -8},
@@ -92,6 +157,7 @@ SHOT_3_DRAWABLES := [?]scenes.Cutscene_Drawable {
 
 SHOT_4_DRAWABLES := [?]scenes.Cutscene_Drawable {
 	{
+		asset = .Ground_Patch,
 		position_start = rl.Vector3{0, 0.1, 0},
 		position_end = rl.Vector3{0, 0.1, 0},
 		size_start = rl.Vector3{14, 0.1, 14},
@@ -107,16 +173,16 @@ SHOT_4_DRAWABLES := [?]scenes.Cutscene_Drawable {
 	},
 	{
 		asset = .Pine_Tree,
-		position_start = rl.Vector3{-4, 0.6, -1},
-		position_end = rl.Vector3{-4, 0.6, -1},
+		position_start = rl.Vector3{-4, 0, -1},
+		position_end = rl.Vector3{-4, 0, -1},
 		size_start = rl.Vector3{1.2, 1.8, 1.2},
 		size_end = rl.Vector3{1.2, 1.8, 1.2},
 		color = rl.BLUE,
 	},
 	{
 		asset = .Pine_Tree,
-		position_start = rl.Vector3{4, 0.6, 2},
-		position_end = rl.Vector3{4, 0.6, 2},
+		position_start = rl.Vector3{4, 0, 2},
+		position_end = rl.Vector3{4, 0, 2},
 		size_start = rl.Vector3{1.2, 1.8, 1.2},
 		size_end = rl.Vector3{1.2, 1.8, 1.2},
 		color = rl.BLUE,
@@ -124,6 +190,22 @@ SHOT_4_DRAWABLES := [?]scenes.Cutscene_Drawable {
 }
 
 SHOT_5_DRAWABLES := [?]scenes.Cutscene_Drawable {
+	{
+		asset = .Night_Sky,
+		position_start = rl.Vector3{0, 8, -16},
+		position_end = rl.Vector3{0, 8, -18},
+		size_start = rl.Vector3{36, 18, 1},
+		size_end = rl.Vector3{36, 18, 1},
+		color = NIGHT_SKY_COLOR,
+	},
+	{
+		asset = .Ground_Patch,
+		position_start = rl.Vector3{0, 0, 3},
+		position_end = rl.Vector3{0, 0, 0},
+		size_start = rl.Vector3{22, 0.16, 26},
+		size_end = rl.Vector3{22, 0.16, 26},
+		color = rl.DARKGREEN,
+	},
 	{
 		position_start = rl.Vector3{0, 2, 6},
 		position_end = rl.Vector3{0, 5, -1},
@@ -140,8 +222,8 @@ SHOT_5_DRAWABLES := [?]scenes.Cutscene_Drawable {
 	},
 	{
 		asset = .Pine_Tree,
-		position_start = rl.Vector3{0, 2.5, -4},
-		position_end = rl.Vector3{0, 2.5, -4},
+		position_start = rl.Vector3{0, 0, -4},
+		position_end = rl.Vector3{0, 0, -4},
 		size_start = rl.Vector3{2.0, 5, 2.0},
 		size_end = rl.Vector3{2.0, 5, 2.0},
 		color = rl.DARKGREEN,
@@ -149,6 +231,22 @@ SHOT_5_DRAWABLES := [?]scenes.Cutscene_Drawable {
 }
 
 SHOT_6_DRAWABLES := [?]scenes.Cutscene_Drawable {
+	{
+		asset = .Night_Sky,
+		position_start = rl.Vector3{0, 7, -14},
+		position_end = rl.Vector3{0, 7, -14},
+		size_start = rl.Vector3{34, 16, 1},
+		size_end = rl.Vector3{34, 16, 1},
+		color = NIGHT_SKY_COLOR,
+	},
+	{
+		asset = .Mountain_Range,
+		position_start = rl.Vector3{0, -0.8, -13},
+		position_end = rl.Vector3{0, -0.8, -13},
+		size_start = rl.Vector3{24, 5.2, 2.2},
+		size_end = rl.Vector3{24, 5.2, 2.2},
+		color = rl.DARKGRAY,
+	},
 	{
 		position_start = rl.Vector3{0, 1, -8},
 		position_end = rl.Vector3{0, 1, -8},
@@ -195,7 +293,7 @@ INTRO_CUTSCENE_SHOTS := [?]scenes.Scene_Shot {
 		target_start = rl.Vector3{0, 1.5, 4},
 		target_end = rl.Vector3{0, 1.5, -20},
 		up = rl.Vector3{0, 1, 0},
-		background = rl.DARKGREEN,
+		background = NIGHT_SKY_COLOR,
 		show_grid = false,
 		shake_delay = 0,
 		shake = scenes.Screen_Shake{duration = 8.0, strength = 0.08, frequency = 18},
@@ -240,7 +338,7 @@ INTRO_CUTSCENE_SHOTS := [?]scenes.Scene_Shot {
 		target_start = rl.Vector3{0, 1.5, 8},
 		target_end = rl.Vector3{0, 2.5, -4},
 		up = rl.Vector3{0, 1, 0},
-		background = rl.DARKGREEN,
+		background = NIGHT_SKY_COLOR,
 		show_grid = false,
 		shake_delay = 0.5,
 		shake = scenes.Screen_Shake{duration = 2.4, strength = 0.45, frequency = 28},

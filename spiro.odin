@@ -1,5 +1,6 @@
 package spiro
 
+import "core:os"
 import rl "vendor:raylib"
 
 WINDOW_TITLE :: "spiro"
@@ -12,7 +13,7 @@ main :: proc() {
 	defer rl.CloseWindow()
 
 	enter_fullscreen()
-	game := game_init()
+	game := game_init(parse_launch_config())
 
 	for !rl.WindowShouldClose() {
 		dt := rl.GetFrameTime()
@@ -24,6 +25,31 @@ main :: proc() {
 		draw_game(&game)
 		rl.EndDrawing()
 	}
+}
+
+parse_launch_config :: proc() -> Game_Config {
+	config := game_default_config()
+
+	for arg in os.args {
+		switch arg {
+		case "-field":
+			config.start_ui = .Field
+			config.field_kind = .Forest
+		case "-plains":
+			config.start_ui = .Field
+			config.field_kind = .Plains
+		case "-mountains":
+			config.start_ui = .Field
+			config.field_kind = .Mountains
+		case "-desert":
+			config.start_ui = .Field
+			config.field_kind = .Desert
+		case "-debug":
+			config.debug = true
+		}
+	}
+
+	return config
 }
 
 enter_fullscreen :: proc() {

@@ -1,7 +1,10 @@
 package scenes
 
 import drones "../assets/drones"
+import mountains "../assets/mountains"
 import rl "vendor:raylib"
+import skies "../assets/skies"
+import terrain "../assets/terrain"
 import trees "../assets/trees"
 
 Cutscene :: struct {
@@ -34,6 +37,9 @@ Cutscene_Asset :: enum {
 	Quadcopter,
 	Pine_Tree,
 	Oak_Tree,
+	Ground_Patch,
+	Mountain_Range,
+	Night_Sky,
 }
 
 Cutscene_Drawable :: struct {
@@ -141,6 +147,12 @@ draw_cutscene_asset :: proc(asset: Cutscene_Asset, position, size: rl.Vector3, c
 		trees.draw_pine(position, size, rl.BROWN, color)
 	case .Oak_Tree:
 		trees.draw_oak(position, size, rl.BROWN, color)
+	case .Ground_Patch:
+		terrain.draw_ground_patch(position, size, color)
+	case .Mountain_Range:
+		mountains.draw_mountain_range(position, size, color)
+	case .Night_Sky:
+		skies.draw_night_sky(position, size, color)
 	}
 }
 
